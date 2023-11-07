@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flix_id/domain/entities/entities.dart';
 
-abstract interface class AuthenticationRepostirory {
+abstract interface class UserRepostirory {
   Future<Result<User>> createUser({
     required String email,
     required String name,
