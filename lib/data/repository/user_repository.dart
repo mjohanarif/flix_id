@@ -28,7 +28,7 @@ abstract interface class UserRepostirory {
     required int balance,
   });
   Future<Result<User>> updateProfilePicture({
-    required String uid,
+    required User user,
     required File imageFile,
   });
 }
