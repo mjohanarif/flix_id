@@ -33,7 +33,7 @@ class FirebaseAuthenticationRepository implements AuthenticationRepostirory {
 
   @override
   Future<Result<void>> logout() async {
-    _firebaseAuth.signOut();
+    await _firebaseAuth.signOut();
     if (_firebaseAuth.currentUser == null) {
       return const Result.success(null);
     } else {
