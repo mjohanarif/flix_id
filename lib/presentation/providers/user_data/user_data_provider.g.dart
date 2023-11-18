@@ -6,21 +6,19 @@ part of 'user_data_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userDataProviderHash() => r'7bfb486ff0fe1ed525a557c6d995baa862e43e7c';
+String _$userDataHash() => r'c17586b3cdb7bbf161d6487bb0078f11c59c41c8';
 
-/// See also [UserDataProvider].
-@ProviderFor(UserDataProvider)
-final userDataProviderProvider =
-    AsyncNotifierProvider<UserDataProvider, User?>.internal(
-  UserDataProvider.new,
-  name: r'userDataProviderProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$userDataProviderHash,
+/// See also [UserData].
+@ProviderFor(UserData)
+final userDataProvider = AsyncNotifierProvider<UserData, User?>.internal(
+  UserData.new,
+  name: r'userDataProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userDataHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserDataProvider = AsyncNotifier<User?>;
+typedef _$UserData = AsyncNotifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
