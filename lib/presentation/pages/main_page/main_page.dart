@@ -17,6 +17,8 @@ class MainPage extends ConsumerStatefulWidget {
 }
 
 class _MainPageState extends ConsumerState<MainPage> {
+  final PageController pageController = PageController();
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     ref.listen(userDataProvider, (previous, next) {
@@ -34,38 +36,47 @@ class _MainPageState extends ConsumerState<MainPage> {
       ),
       body: Stack(
         children: [
-          Center(
-            child: Column(
-              children: [
-                Text(
-                  ref.watch(userDataProvider).when(
-                        data: (data) => data.toString(),
-                        error: (error, stackTrace) => '',
-                        loading: () => 'Loading',
-                      ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    ref.read(userDataProvider.notifier).logOut();
-                  },
-                  child: const Text(
-                    'Logout',
-                  ),
-                ),
-              ],
-            ),
+          PageView(
+            controller: pageController,
+            onPageChanged: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            children: const [
+              Center(child: Text('Home')),
+              Center(child: Text('Ticket')),
+              Center(child: Text('Profile')),
+            ],
           ),
           BottomNavBar(
-            items: const [
+            items: [
               BottomNavBarItem(
-                  index: 0,
-                  title: 'Home',
-                  imageSelected: 'assets/movie-selected.png',
-                  imageUnselected: 'assets/movie.png',
-                  isSelected: false)
+                index: 0,
+                title: 'Home',
+                imageSelected: 'assets/movie-selected.png',
+                imageUnselected: 'assets/movie.png',
+                isSelected: selectedIndex == 0,
+              ),
+              BottomNavBarItem(
+                index: 1,
+                title: 'Ticket',
+                imageSelected: 'assets/ticket-selected.png',
+                imageUnselected: 'assets/ticket.png',
+                isSelected: selectedIndex == 1,
+              ),
+              BottomNavBarItem(
+                index: 2,
+                title: 'Profile',
+                imageSelected: 'assets/profile-selected.png',
+                imageUnselected: 'assets/profile.png',
+                isSelected: selectedIndex == 2,
+              ),
             ],
-            onTap: (index) {},
-            selectedIndex: 0,
+            onTap: (index) {
+              pageController.jumpToPage(index);
+            },
+            selectedIndex: selectedIndex,
           )
         ],
       ),
