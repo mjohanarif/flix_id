@@ -81,6 +81,8 @@ class TmdbMovieRepository implements MovieRepository {
       );
     } on DioException catch (e) {
       return Result.failed('${e.message}');
+    } catch (e) {
+      return Result.failed(e.toString());
     }
   }
 }

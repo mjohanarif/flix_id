@@ -16,7 +16,7 @@ class Upcoming extends _$Upcoming {
 
     GetMovieList getMovieList = ref.read(getMovieListProvider);
 
-    var result = getMovieList(
+    var result = await getMovieList(
       GetMovieListParam(
         category: MovieListCategory.upcoming,
         page: page,

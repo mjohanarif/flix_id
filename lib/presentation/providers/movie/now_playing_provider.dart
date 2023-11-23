@@ -16,7 +16,7 @@ class NowPlaying extends _$NowPlaying {
 
     GetMovieList getMovieList = ref.read(getMovieListProvider);
 
-    var result = getMovieList(
+    var result = await getMovieList(
       GetMovieListParam(
         category: MovieListCategory.nowPlaying,
         page: page,
