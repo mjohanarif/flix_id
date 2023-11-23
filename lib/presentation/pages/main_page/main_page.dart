@@ -1,4 +1,5 @@
 import 'package:flix_id/presentation/extensions/build_context_extension.dart';
+import 'package:flix_id/presentation/pages/movie_page/movie_page.dart';
 import 'package:flix_id/presentation/pages/profile_page.dart/profile_page.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
@@ -42,7 +43,7 @@ class _MainPageState extends ConsumerState<MainPage> {
               });
             },
             children: const [
-              Center(child: Text('Home')),
+              MoviePage(),
               Center(child: Text('Ticket')),
               ProfilePage(),
             ],
