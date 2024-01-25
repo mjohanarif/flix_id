@@ -9,14 +9,14 @@ class NetworkImageCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const NetworkImageCard({
-    Key? key,
+    super.key,
     this.width = 150,
     this.height = 228,
     this.borderRadius = 10,
     this.imageUrl,
     this.boxFit,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

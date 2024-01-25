@@ -7,13 +7,13 @@ class BottomNavBarItem extends StatelessWidget {
   final String imageUnselected;
   final bool isSelected;
   const BottomNavBarItem({
-    Key? key,
+    super.key,
     required this.index,
     required this.title,
     required this.imageSelected,
     required this.imageUnselected,
     required this.isSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
