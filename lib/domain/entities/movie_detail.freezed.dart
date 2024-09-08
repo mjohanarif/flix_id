@@ -25,11 +25,11 @@ mixin _$MovieDetail {
   @JsonKey(name: 'poster_path')
   String? get posterPath => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-  @JsonKey(name: 'back_drop')
+  @JsonKey(name: 'backdrop_path')
   String? get backDrop => throw _privateConstructorUsedError;
   int get runtime => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_average')
-  double get voteAverage => throw _privateConstructorUsedError;
+  double? get voteAverage => throw _privateConstructorUsedError;
   @JsonKey(fromJson: parse)
   List<String> get genres => throw _privateConstructorUsedError;
 
@@ -50,9 +50,9 @@ abstract class $MovieDetailCopyWith<$Res> {
       String title,
       @JsonKey(name: 'poster_path') String? posterPath,
       String overview,
-      @JsonKey(name: 'back_drop') String? backDrop,
+      @JsonKey(name: 'backdrop_path') String? backDrop,
       int runtime,
-      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_average') double? voteAverage,
       @JsonKey(fromJson: parse) List<String> genres});
 }
 
@@ -75,7 +75,7 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
     Object? overview = null,
     Object? backDrop = freezed,
     Object? runtime = null,
-    Object? voteAverage = null,
+    Object? voteAverage = freezed,
     Object? genres = null,
   }) {
     return _then(_value.copyWith(
@@ -103,10 +103,10 @@ class _$MovieDetailCopyWithImpl<$Res, $Val extends MovieDetail>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      voteAverage: null == voteAverage
+      voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -128,9 +128,9 @@ abstract class _$$MovieDetailImplCopyWith<$Res>
       String title,
       @JsonKey(name: 'poster_path') String? posterPath,
       String overview,
-      @JsonKey(name: 'back_drop') String? backDrop,
+      @JsonKey(name: 'backdrop_path') String? backDrop,
       int runtime,
-      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_average') double? voteAverage,
       @JsonKey(fromJson: parse) List<String> genres});
 }
 
@@ -151,7 +151,7 @@ class __$$MovieDetailImplCopyWithImpl<$Res>
     Object? overview = null,
     Object? backDrop = freezed,
     Object? runtime = null,
-    Object? voteAverage = null,
+    Object? voteAverage = freezed,
     Object? genres = null,
   }) {
     return _then(_$MovieDetailImpl(
@@ -179,10 +179,10 @@ class __$$MovieDetailImplCopyWithImpl<$Res>
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
               as int,
-      voteAverage: null == voteAverage
+      voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       genres: null == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
@@ -199,9 +199,9 @@ class _$MovieDetailImpl implements _MovieDetail {
       required this.title,
       @JsonKey(name: 'poster_path') this.posterPath,
       required this.overview,
-      @JsonKey(name: 'back_drop') this.backDrop,
+      @JsonKey(name: 'backdrop_path') this.backDrop,
       required this.runtime,
-      @JsonKey(name: 'vote_average') required this.voteAverage,
+      @JsonKey(name: 'vote_average') this.voteAverage,
       @JsonKey(fromJson: parse) required final List<String> genres})
       : _genres = genres;
 
@@ -218,13 +218,13 @@ class _$MovieDetailImpl implements _MovieDetail {
   @override
   final String overview;
   @override
-  @JsonKey(name: 'back_drop')
+  @JsonKey(name: 'backdrop_path')
   final String? backDrop;
   @override
   final int runtime;
   @override
   @JsonKey(name: 'vote_average')
-  final double voteAverage;
+  final double? voteAverage;
   final List<String> _genres;
   @override
   @JsonKey(fromJson: parse)
@@ -291,9 +291,9 @@ abstract class _MovieDetail implements MovieDetail {
           required final String title,
           @JsonKey(name: 'poster_path') final String? posterPath,
           required final String overview,
-          @JsonKey(name: 'back_drop') final String? backDrop,
+          @JsonKey(name: 'backdrop_path') final String? backDrop,
           required final int runtime,
-          @JsonKey(name: 'vote_average') required final double voteAverage,
+          @JsonKey(name: 'vote_average') final double? voteAverage,
           @JsonKey(fromJson: parse) required final List<String> genres}) =
       _$MovieDetailImpl;
 
@@ -310,13 +310,13 @@ abstract class _MovieDetail implements MovieDetail {
   @override
   String get overview;
   @override
-  @JsonKey(name: 'back_drop')
+  @JsonKey(name: 'backdrop_path')
   String? get backDrop;
   @override
   int get runtime;
   @override
   @JsonKey(name: 'vote_average')
-  double get voteAverage;
+  double? get voteAverage;
   @override
   @JsonKey(fromJson: parse)
   List<String> get genres;

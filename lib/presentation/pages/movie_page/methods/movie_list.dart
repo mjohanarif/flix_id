@@ -2,6 +2,7 @@ import 'package:flix_id/domain/entities/entities.dart';
 import 'package:flix_id/presentation/widgets/network_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 List<Widget> movieList({
   required String title,
@@ -16,7 +17,7 @@ List<Widget> movieList({
         ),
         child: Text(
           title,
-          style: const TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

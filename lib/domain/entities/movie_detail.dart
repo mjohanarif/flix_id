@@ -10,9 +10,9 @@ class MovieDetail with _$MovieDetail {
     required String title,
     @JsonKey(name: 'poster_path') String? posterPath,
     required String overview,
-    @JsonKey(name: 'back_drop') String? backDrop,
+    @JsonKey(name: 'backdrop_path') String? backDrop,
     required int runtime,
-    @JsonKey(name: 'vote_average') required double voteAverage,
+    @JsonKey(name: 'vote_average') double? voteAverage,
     @JsonKey(fromJson: parse) required List<String> genres,
   }) = _MovieDetail;
 

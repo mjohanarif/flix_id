@@ -12,9 +12,9 @@ _$MovieDetailImpl _$$MovieDetailImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       posterPath: json['poster_path'] as String?,
       overview: json['overview'] as String,
-      backDrop: json['back_drop'] as String?,
+      backDrop: json['backdrop_path'] as String?,
       runtime: json['runtime'] as int,
-      voteAverage: (json['vote_average'] as num).toDouble(),
+      voteAverage: (json['vote_average'] as num?)?.toDouble(),
       genres: parse(json['genres']),
     );
 
@@ -24,7 +24,7 @@ Map<String, dynamic> _$$MovieDetailImplToJson(_$MovieDetailImpl instance) =>
       'title': instance.title,
       'poster_path': instance.posterPath,
       'overview': instance.overview,
-      'back_drop': instance.backDrop,
+      'backdrop_path': instance.backDrop,
       'runtime': instance.runtime,
       'vote_average': instance.voteAverage,
       'genres': instance.genres,
