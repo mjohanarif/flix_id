@@ -48,7 +48,7 @@ class DetailPage extends ConsumerWidget {
                       height: (MediaQuery.of(context).size.width - 48) * 0.6,
                       borderRadius: 15,
                       imageUrl: asyncMovieDetail.valueOrNull != null
-                          ? 'https://image.tmdb.org/t/p/w500${asyncMovieDetail.value!.backDrop ?? movie.posterPath}'
+                          ? '${baseImageUrl('500')}${asyncMovieDetail.value!.backDrop ?? movie.posterPath}'
                           : null,
                       boxFit: BoxFit.cover,
                     ),

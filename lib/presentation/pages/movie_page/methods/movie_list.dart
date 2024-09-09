@@ -1,4 +1,5 @@
 import 'package:flix_id/domain/entities/entities.dart';
+import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/widgets/network_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,8 +38,7 @@ List<Widget> movieList({
                         right: movie == data.last ? 24 : 0,
                       ),
                       child: NetworkImageCard(
-                        imageUrl:
-                            'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                        imageUrl: '${baseImageUrl('500')}/${movie.posterPath}',
                         boxFit: BoxFit.contain,
                         onTap: () => onTap?.call(movie),
                       ),

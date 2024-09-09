@@ -63,7 +63,7 @@ class _TimeBookingPageState extends ConsumerState<TimeBookingPage> {
                   height: (MediaQuery.of(context).size.width - 48) * 0.6,
                   borderRadius: 15,
                   imageUrl:
-                      'https://image.tmdb.org/t/p/w500${widget.movieDetail.backDrop ?? widget.movieDetail.posterPath}',
+                      '${baseImageUrl('500')}${widget.movieDetail.backDrop ?? widget.movieDetail.posterPath}',
                   boxFit: BoxFit.cover,
                 ),
               ),

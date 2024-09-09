@@ -1,4 +1,5 @@
 import 'package:flix_id/domain/entities/entities.dart';
+import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/misc/methods.dart';
 import 'package:flix_id/presentation/providers/movie/actors_provider.dart';
 import 'package:flix_id/presentation/widgets/network_image_card.dart';
@@ -36,7 +37,7 @@ List<Widget> costAndCrew({
                                     width: 100,
                                     height: 152,
                                     imageUrl:
-                                        'https://image.tmdb.org/t/p/w185${e.profilePath}',
+                                        '${baseImageUrl('185')}${e.profilePath}',
                                     boxFit: BoxFit.cover,
                                   ),
                                   SizedBox(

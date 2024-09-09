@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 List<Widget> background(Movie movie) => [
       Image.network(
-        'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+        '${baseImageUrl('500')}${movie.posterPath}',
         fit: BoxFit.cover,
         height: double.infinity,
         width: double.infinity,
