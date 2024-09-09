@@ -24,11 +24,9 @@ class FirebaseTransactionRepository implements TransactionRepository {
           await FirebaseUserRepository().getUserBalance(uid: transaction.uid);
       if (currentBalance.isSuccess) {
         if (currentBalance.resultValue! - transaction.total >= 0) {
-          await documentReference.doc(transaction.uid).set(
-                transaction.toJson(),
-              );
+          await documentReference.doc(transaction.id).set(transaction.toJson());
 
-          var result = await documentReference.doc().get();
+          var result = await documentReference.doc(transaction.id).get();
 
           if (result.exists) {
             await FirebaseUserRepository().updateUserBalance(
