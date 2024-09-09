@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flix_id/domain/entities/entities.dart';
+import 'package:flix_id/presentation/extensions/build_context_extension.dart';
 import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/misc/methods.dart';
 import 'package:flix_id/presentation/pages/seat_booking_page.dart/methods/seat_section.dart';
@@ -95,7 +96,23 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                       ),
                     ),
                     child: const Text('Next'),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (selectedSeats.isEmpty) {
+                        context.shohSnackbar('Please select at least one seat');
+                      } else {
+                        var updatedTransaction = transaction.copyWith(
+                          seats:
+                              (selectedSeats..sort()).map((e) => '$e').toList(),
+                          ticketAmount: selectedSeats.length,
+                          ticketPrice: 25000,
+                        );
+
+                        ref.read(routerProvider).pushNamed(
+                          'booking-confirmation',
+                          extra: (movieDetail, updatedTransaction),
+                        );
+                      }
+                    },
                   ),
                 )
               ],

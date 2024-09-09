@@ -248,7 +248,7 @@ class _$TransactionImpl implements _Transaction {
       this.transactionTime,
       this.transactionImage,
       required this.title,
-      final List<String> seats = const [],
+      final List<String> seats = const <String>[],
       this.theaterName,
       this.watchTime,
       this.ticketAmount,

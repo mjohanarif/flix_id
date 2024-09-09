@@ -15,7 +15,7 @@ _$TransactionImpl _$$TransactionImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       seats:
           (json['seats'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
+              const <String>[],
       theaterName: json['theaterName'] as String?,
       watchTime: json['watchTime'] as int?,
       ticketAmount: json['ticketAmount'] as int?,
