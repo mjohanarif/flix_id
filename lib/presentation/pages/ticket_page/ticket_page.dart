@@ -17,7 +17,7 @@ class TicketPage extends ConsumerWidget {
             children: ref.watch(transactionDataProvider).when(
                   data: (transactions) => (transactions
                           .where((element) =>
-                              element.title != 'Top Up' &&
+                              element.title != 'Top up' &&
                               element.watchTime! >=
                                   DateTime.now().millisecondsSinceEpoch)
                           .toList()

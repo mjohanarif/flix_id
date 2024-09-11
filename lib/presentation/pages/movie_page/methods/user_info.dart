@@ -1,5 +1,6 @@
 import 'package:flix_id/presentation/extensions/int_extension.dart';
 import 'package:flix_id/presentation/misc/methods.dart';
+import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,24 +48,29 @@ Widget userInfo(WidgetRef ref) => Padding(
                 style: TextStyle(fontSize: 12),
               ),
               verticalSpaces(5),
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/wallet.png',
-                    width: 18,
-                    height: 18,
-                  ),
-                  horizontalSpaces(10),
-                  Text(
-                    ref.watch(userDataProvider).when(
-                          data: (user) =>
-                              (user?.balance ?? 0).toIDRFormatCurrency(),
-                          error: (error, stackTrace) => 'IDR 0',
-                          loading: () => 'Loading...',
-                        ),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+              GestureDetector(
+                onTap: () {
+                  ref.read(routerProvider).pushNamed('wallet');
+                },
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/wallet.png',
+                      width: 18,
+                      height: 18,
+                    ),
+                    horizontalSpaces(10),
+                    Text(
+                      ref.watch(userDataProvider).when(
+                            data: (user) =>
+                                (user?.balance ?? 0).toIDRFormatCurrency(),
+                            error: (error, stackTrace) => 'IDR 0',
+                            loading: () => 'Loading...',
+                          ),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

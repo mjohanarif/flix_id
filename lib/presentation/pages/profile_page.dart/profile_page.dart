@@ -1,6 +1,7 @@
 import 'package:flix_id/presentation/misc/methods.dart';
 import 'package:flix_id/presentation/pages/profile_page.dart/methods/profile_item.dart';
 import 'package:flix_id/presentation/pages/profile_page.dart/methods/user_info.dart';
+import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +27,9 @@ class ProfilePage extends ConsumerWidget {
           verticalSpaces(20),
           profileItem(
             'My Wallet',
-            onTap: () {},
+            onTap: () {
+              ref.read(routerProvider).pushNamed('wallet');
+            },
           ),
           verticalSpaces(20),
           profileItem(
