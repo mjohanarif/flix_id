@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flix_id/domain/usecase/register/register_param.dart';
 import 'package:flix_id/presentation/extensions/build_context_extension.dart';
 import 'package:flix_id/presentation/misc/methods.dart';
@@ -6,22 +8,30 @@ import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart
 import 'package:flix_id/presentation/widgets/flix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class RegisterPage extends ConsumerWidget {
+class RegisterPage extends ConsumerStatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  ConsumerState<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends ConsumerState<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final TextEditingController retypePassController = TextEditingController();
 
-  RegisterPage({
-    super.key,
-  });
+  XFile? xfile;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     ref.listen(userDataProvider, (previous, next) {
       if (next is AsyncData && next.value != null) {
-        ref.read(routerProvider).goNamed('main');
+        ref
+            .read(routerProvider)
+            .goNamed('main', extra: xfile != null ? File(xfile!.path) : null);
       } else if (next is AsyncError) {
         context.shohSnackbar(
           next.error.toString(),
@@ -39,12 +49,24 @@ class RegisterPage extends ConsumerWidget {
             ),
           ),
           verticalSpaces(50),
-          const CircleAvatar(
-            radius: 50,
-            child: Icon(
-              Icons.add_a_photo,
-              size: 50,
-              color: Colors.white,
+          GestureDetector(
+            onTap: () async {
+              xfile =
+                  await ImagePicker().pickImage(source: ImageSource.gallery);
+
+              setState(() {});
+            },
+            child: CircleAvatar(
+              radius: 50,
+              backgroundImage:
+                  xfile != null ? FileImage(File(xfile!.path)) : null,
+              child: xfile != null
+                  ? null
+                  : const Icon(
+                      Icons.add_a_photo,
+                      size: 50,
+                      color: Colors.white,
+                    ),
             ),
           ),
           Padding(

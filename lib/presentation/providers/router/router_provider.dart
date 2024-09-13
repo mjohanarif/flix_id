@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flix_id/domain/entities/entities.dart';
 import 'package:flix_id/presentation/pages/booking_confirmation_page/booking_confirmation_page.dart';
 import 'package:flix_id/presentation/pages/detail_page/detail_page.dart';
@@ -18,7 +20,9 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/main',
           name: 'main',
-          builder: (context, state) => const MainPage(),
+          builder: (context, state) => MainPage(
+            imageFile: state.extra != null ? state.extra as File : null,
+          ),
         ),
         GoRoute(
           path: '/login',
@@ -28,7 +32,7 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/register',
           name: 'register',
-          builder: (context, state) => RegisterPage(),
+          builder: (context, state) => const RegisterPage(),
         ),
         GoRoute(
           path: '/detail',
